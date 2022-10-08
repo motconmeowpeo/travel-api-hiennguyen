@@ -72,11 +72,13 @@ router.put("/:id", async (req, res) => {
 })
 
 //delete
-router.post("/delete/:id", async (req, res) => {
+router.post("/delete", async (req, res) => {
+    let id = req.body.id;
+
     res.setHeader('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
     res.setHeader('Access-Control-Allow-Origin', '*');
-    const tour = await Tour.findByIdAndRemove(req.params.id)
+    const tour = await Tour.findByIdAndRemove(id)
     if (!tour)
         res.status(404).send("Not found")
     else
