@@ -7,7 +7,7 @@
     "node": "14.x"
   },
   "scripts": {
-    "start":"nodemon index.js",
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/HienNguyen120601/travel-api-bynguyen#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.18.1",
     "mongoose": "^6.6.5",
     "nodemon": "^2.0.20",
