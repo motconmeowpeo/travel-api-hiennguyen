@@ -34,7 +34,7 @@ router.get("/", (req, res) => {
     Tour.find().then((tour) => res.send(tour)).catch((err) => {
         res.status(500).send('ERR')
     })
-
+    res.setHeader('Access-Control-Allow-Origin', '*');
 })
 
 
@@ -46,7 +46,7 @@ router.get("/:id", async (req, res) => {
         res.status(404).send('Not found')
     else
         res.send(book)
-
+    res.setHeader('Access-Control-Allow-Origin', '*');
 })
 
 //UPdate
@@ -64,7 +64,7 @@ router.put("/:id", async (req, res) => {
         res.status(404).send("Not found")
     else
         res.send(updateTour)
-
+    res.setHeader('Access-Control-Allow-Origin', '*');
 })
 
 //delete
@@ -74,5 +74,6 @@ router.delete("/:id", async (req, res) => {
         res.status(404).send("Not found")
     else
         res.send(book)
+    res.setHeader('Access-Control-Allow-Origin', '*');
 })
 module.exports = router
