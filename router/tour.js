@@ -6,6 +6,7 @@ const router = express.Router()
 //Post
 
 router.post('/', async (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
     const err = await validateTour(req.body)
     if (err.message)
         res.status(400).send(err.message)
@@ -25,33 +26,36 @@ router.post('/', async (req, res) => {
         .catch((err) => {
             res.status(500).send(err)
         })
-    res.setHeader('Access-Control-Allow-Origin', '*');
+
 })
 
 //Get all
 
 router.get("/", (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
     Tour.find().then((tour) => res.send(tour)).catch((err) => {
         res.status(500).send('ERR')
     })
-    res.setHeader('Access-Control-Allow-Origin', '*');
+
 })
 
 
 //Get by id
 
 router.get("/:id", async (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
     const tour = await Tour.findById(req.params.id)
     if (!tour)
         res.status(404).send('Not found')
     else
         res.send(tour)
-    res.setHeader('Access-Control-Allow-Origin', '*');
+
 })
 
 //UPdate
 
 router.put("/:id", async (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
     const updateTour = await Tour.findByIdAndUpdate(req.params.id, {
         title: req.body.title,
         price: req.body.price,
@@ -64,16 +68,17 @@ router.put("/:id", async (req, res) => {
         res.status(404).send("Not found")
     else
         res.send(updateTour)
-    res.setHeader('Access-Control-Allow-Origin', '*');
+
 })
 
 //delete
 router.delete("/:id", async (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
     const tour = await Tour.findByIdAndRemove(req.params.id)
     if (!tour)
         res.status(404).send("Not found")
     else
         res.send(tour)
-    res.setHeader('Access-Control-Allow-Origin', '*');
+
 })
 module.exports = router
