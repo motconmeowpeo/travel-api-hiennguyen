@@ -25,7 +25,7 @@ router.post('/', async (req, res) => {
         .catch((err) => {
             res.status(500).send(err)
         })
-    res.setHeader('Access-Control-Allow-Origin', '*');
+
 })
 
 //Get all
@@ -65,7 +65,7 @@ router.put("/:id", async (req, res) => {
 
         res.send(updateCustomer)
     }
-    res.setHeader('Access-Control-Allow-Origin', '*');
+
 })
 
 //delete
@@ -77,6 +77,6 @@ router.delete("/:id", async (req, res) => {
         res.send(customer)
 
     }
-    res.setHeader('Access-Control-Allow-Origin', '*');
+
 })
 module.exports = router
