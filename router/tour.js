@@ -1,5 +1,5 @@
 const express = require('express')
-const { model } = require('mongoose')
+
 const { Tour, validateTour } = require('../model/tour')
 const router = express.Router()
 
@@ -41,11 +41,11 @@ router.get("/", (req, res) => {
 //Get by id
 
 router.get("/:id", async (req, res) => {
-    const book = await Tour.findById(req.params.id)
-    if (!book)
+    const tour = await Tour.findById(req.params.id)
+    if (!tour)
         res.status(404).send('Not found')
     else
-        res.send(book)
+        res.send(tour)
     res.setHeader('Access-Control-Allow-Origin', '*');
 })
 
@@ -69,11 +69,11 @@ router.put("/:id", async (req, res) => {
 
 //delete
 router.delete("/:id", async (req, res) => {
-    const book = await Tour.findByIdAndRemove(req.params.id)
-    if (!book)
+    const tour = await Tour.findByIdAndRemove(req.params.id)
+    if (!tour)
         res.status(404).send("Not found")
     else
-        res.send(book)
+        res.send(tour)
     res.setHeader('Access-Control-Allow-Origin', '*');
 })
 module.exports = router
