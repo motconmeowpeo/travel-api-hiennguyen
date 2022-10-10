@@ -11,6 +11,7 @@ app.use(cors({ origin: '*' }))
 
 const tourRouter = require('./router/tour')
 const customerRouter = require('./router/customer')
+const orderRouter = require('./router/order')
 //Connect databse
 mongose.connect("mongodb+srv://c2star07:hiennguyen123@cluster0.n0rogqq.mongodb.net/Travel?retryWrites=true&w=majority")
     .then(() => {
@@ -24,6 +25,7 @@ mongose.connect("mongodb+srv://c2star07:hiennguyen123@cluster0.n0rogqq.mongodb.n
 //Use router
 app.use('/api/tour', tourRouter)
 app.use('/api/customer', customerRouter)
+app.use('/api/order', orderRouter)
 app.get('/', (req, res) => {
     res.send("Hello This Is Api By Nguyen")
 })
