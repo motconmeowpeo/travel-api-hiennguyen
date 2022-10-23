@@ -25,6 +25,11 @@ const orderSchema = new mongoose.Schema({
         type: String,
         require: true
     },
+    status:
+    {
+        type: Boolean,
+        require: true
+    }
 
 })
 
@@ -38,6 +43,7 @@ const validateOrder = (order) => {
         tour_id: yup.string().required(),
         date: yup.string().required(),
         phonenumber: yup.string().required(),
+        status: yup.boolean.require()
     })
 
     return schema.validate(order).then(order => order)

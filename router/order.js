@@ -17,7 +17,8 @@ router.post('/', async (req, res) => {
             hotel_id: req.body.hotel_id,
             tour_id: req.body.tour_id,
             date: req.body.date,
-            phonenumber: req.body.phonenumber
+            phonenumber: req.body.phonenumber,
+            status: req.body.status
         }
     )
 
@@ -63,8 +64,8 @@ router.put("/:id", async (req, res) => {
         hotel_id: req.body.hotel_id,
         tour_id: req.body.tour_id,
         date: req.body.date,
-        phonenumber: req.body.phonenumber
-
+        phonenumber: req.body.phonenumber,
+        status: req.body.status
     }, { new: true })
     if (!updateOrder)
         res.status(404).send("Not found")
