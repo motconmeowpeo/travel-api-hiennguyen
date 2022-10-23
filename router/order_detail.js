@@ -18,7 +18,8 @@ router.post('/', async (req, res) => {
             vehicle_id: req.body.vehicle_id,
             tourguide_id: req.body.tourguide_id,
             merge_tour: req.body.merge_tour,
-            numberOfPeople: req.body.numberOfPeople
+            numberOfPeople: req.body.numberOfPeople,
+            message: req.body.message
         }
     )
 
@@ -64,7 +65,8 @@ router.put("/:id", async (req, res) => {
         vehicle_id: req.body.vehicle_id,
         tourguide_id: req.body.tourguide_id,
         merge_tour: req.body.merge_tour,
-        numberOfPeople: req.body.numberOfPeople
+        numberOfPeople: req.body.numberOfPeople,
+        message: req.body.message
 
     }, { new: true })
     if (!updateOrder)
