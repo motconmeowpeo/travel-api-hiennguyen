@@ -30,7 +30,7 @@ app.use('/api/customer', customerRouter)
 app.use('/api/order', orderRouter)
 app.use('/api/orderDetail', orderDetailRouter)
 app.get('/', (req, res) => {
-    res.send("Hello This Is Api By Nguyen")
+    res.send("Chin chào !! This is api design and coding by Nguyên :3 .If you see this message. Have a good day moaz moaz :3")
 })
 
 
