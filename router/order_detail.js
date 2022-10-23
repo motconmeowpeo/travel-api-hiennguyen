@@ -7,7 +7,7 @@ const router = express.Router()
 //Post
 
 router.post('/', async (req, res) => {
-    // res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', '*');
     const err = await validateOrderDetail(req.body)
     if (err.message)
         res.status(400).send(err.message)
@@ -34,7 +34,7 @@ router.post('/', async (req, res) => {
 //Get all
 
 router.get("/", (req, res) => {
-    // res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', '*');
     OrderDetail.find().then((orderDetail) => res.send(orderDetail)).catch((err) => {
         res.status(500).send('ERR')
     })
@@ -45,7 +45,7 @@ router.get("/", (req, res) => {
 //Get by id
 
 router.get("/:id", async (req, res) => {
-    // res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', '*');
     const order = await OrderDetail.findById(req.params.id)
     if (!order)
         res.status(404).send('Not found')
@@ -57,7 +57,7 @@ router.get("/:id", async (req, res) => {
 //UPdate
 
 router.put("/:id", async (req, res) => {
-    // res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', '*');
     const updateOrder = await OrderDetail.findByIdAndUpdate(req.params.id, {
         order_id: req.body.order_id,
         driver_id: req.body.driver_id,
@@ -77,7 +77,7 @@ router.put("/:id", async (req, res) => {
 //delete
 router.post("/delete", async (req, res) => {
     let id = req.body.id;
-    // res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', '*');
     const order = await OrderDetail.findByIdAndRemove(id)
     if (!order)
         res.status(404).send("Not found")
