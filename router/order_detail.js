@@ -7,7 +7,7 @@ const router = express.Router()
 //Post
 
 router.post('/', async (req, res) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    // res.setHeader('Access-Control-Allow-Origin', '*');
     const err = await validateOrderDetail(req.body)
     if (err.message)
         res.status(400).send(err.message)
@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
             tourguide_id: req.body.tourguide_id,
             merge_tour: req.body.merge_tour,
             numberOfPeople: req.body.numberOfPeople,
-            message: req.body.message
+            note: req.body.note
         }
     )
 
@@ -66,7 +66,7 @@ router.put("/:id", async (req, res) => {
         tourguide_id: req.body.tourguide_id,
         merge_tour: req.body.merge_tour,
         numberOfPeople: req.body.numberOfPeople,
-        message: req.body.message
+        note: req.body.note
 
     }, { new: true })
     if (!updateOrder)

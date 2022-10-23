@@ -25,8 +25,9 @@ const orderDetailSchema = new mongoose.Schema({
         type: String,
         require: true
     },
-    message: {
+    note: {
         type: String,
+        require: false
 
     }
 
