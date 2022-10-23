@@ -1,28 +1,29 @@
 const express = require('express')
 
-const { Order, validateOrder } = require('../model/order')
+const { OrderDetail, validateOrderDetail } = require('../model/order_detail')
+
 const router = express.Router()
 
 //Post
 
 router.post('/', async (req, res) => {
     // res.setHeader('Access-Control-Allow-Origin', '*');
-    const err = await validateOrder(req.body)
+    const err = await validateOrderDetail(req.body)
     if (err.message)
         res.status(400).send(err.message)
-    order = new Order(
+    orderDetail = new OrderDetail(
         {
-            customer_id: req.body.customer_id,
-            customer_name: req.body.customer_name,
-            hotel_id: req.body.hotel_id,
-            tour_id: req.body.tour_id,
-            date: req.body.date,
-            phonenumber: req.body.phonenumber
+            order_id: req.body.order_id,
+            driver_id: req.body.driver_id,
+            vehicle_id: req.body.vehicle_id,
+            tourguide_id: req.body.tourguide_id,
+            merge_tour: req.body.merge_tour,
+            numberOfPeople: req.body.numberOfPeople
         }
     )
 
-    order.save().then((order) => {
-        res.send(order)
+    orderDetail.save().then((orderDetail) => {
+        res.send(orderDetail)
     })
         .catch((err) => {
             res.status(500).send(err)
@@ -34,7 +35,7 @@ router.post('/', async (req, res) => {
 
 router.get("/", (req, res) => {
     // res.setHeader('Access-Control-Allow-Origin', '*');
-    Order.find().then((order) => res.send(order)).catch((err) => {
+    OrderDetail.find().then((orderDetail) => res.send(orderDetail)).catch((err) => {
         res.status(500).send('ERR')
     })
 
@@ -45,7 +46,7 @@ router.get("/", (req, res) => {
 
 router.get("/:id", async (req, res) => {
     // res.setHeader('Access-Control-Allow-Origin', '*');
-    const order = await Order.findById(req.params.id)
+    const order = await OrderDetail.findById(req.params.id)
     if (!order)
         res.status(404).send('Not found')
     else
@@ -57,13 +58,13 @@ router.get("/:id", async (req, res) => {
 
 router.put("/:id", async (req, res) => {
     // res.setHeader('Access-Control-Allow-Origin', '*');
-    const updateOrder = await Order.findByIdAndUpdate(req.params.id, {
-        customer_id: req.body.customer_id,
-        customer_name: req.body.customer_name,
-        hotel_id: req.body.hotel_id,
-        tour_id: req.body.tour_id,
-        date: req.body.date,
-        phonenumber: req.body.phonenumber
+    const updateOrder = await OrderDetail.findByIdAndUpdate(req.params.id, {
+        order_id: req.body.order_id,
+        driver_id: req.body.driver_id,
+        vehicle_id: req.body.vehicle_id,
+        tourguide_id: req.body.tourguide_id,
+        merge_tour: req.body.merge_tour,
+        numberOfPeople: req.body.numberOfPeople
 
     }, { new: true })
     if (!updateOrder)
@@ -77,7 +78,7 @@ router.put("/:id", async (req, res) => {
 router.post("/delete", async (req, res) => {
     let id = req.body.id;
     // res.setHeader('Access-Control-Allow-Origin', '*');
-    const order = await Order.findByIdAndRemove(id)
+    const order = await OrderDetail.findByIdAndRemove(id)
     if (!order)
         res.status(404).send("Not found")
     else

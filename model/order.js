@@ -5,11 +5,23 @@ const orderSchema = new mongoose.Schema({
         type: String,
         require: true
     },
+    customer_name: {
+        type: String,
+        require: true
+    },
     hotel_id: {
         type: String,
         require: true
     },
     tour_id: {
+        type: String,
+        require: true
+    },
+    date: {
+        type: String,
+        require: true
+    },
+    phonenumber: {
         type: String,
         require: true
     },
@@ -21,8 +33,11 @@ const orderSchema = new mongoose.Schema({
 const validateOrder = (order) => {
     const schema = yup.object().shape({
         customer_id: yup.string().required(),
+        customer_name: yup.string().required(),
         hotel_id: yup.string().required(),
         tour_id: yup.string().required(),
+        date: yup.string().required(),
+        phonenumber: yup.string().required(),
     })
 
     return schema.validate(order).then(order => order)
