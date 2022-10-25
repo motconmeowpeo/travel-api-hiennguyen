@@ -16,6 +16,7 @@ router.post('/', async (req, res) => {
             customer_name: req.body.customer_name,
             hotel_id: req.body.hotel_id,
             tour_id: req.body.tour_id,
+            tour_name: req.body.tour_name,
             date: req.body.date,
             phonenumber: req.body.phonenumber,
             status: req.body.status
@@ -63,6 +64,7 @@ router.put("/:id", async (req, res) => {
         customer_name: req.body.customer_name,
         hotel_id: req.body.hotel_id,
         tour_id: req.body.tour_id,
+        tour_name: req.body.tour_name,
         date: req.body.date,
         phonenumber: req.body.phonenumber,
         status: req.body.status

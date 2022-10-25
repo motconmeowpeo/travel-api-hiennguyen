@@ -17,6 +17,10 @@ const orderSchema = new mongoose.Schema({
         type: String,
         require: true
     },
+    tour_name: {
+        type: String,
+        require: true
+    },
     date: {
         type: String,
         require: true
@@ -41,6 +45,7 @@ const validateOrder = (order) => {
         customer_name: yup.string().required(),
         hotel_id: yup.string().required(),
         tour_id: yup.string().required(),
+        tour_name: yup.string().required(),
         date: yup.string().required(),
         phonenumber: yup.string().required(),
 
