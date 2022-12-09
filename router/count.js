@@ -7,7 +7,7 @@ const router = express.Router()
 
 router.post('/', async (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
-    const err = await validateTour(req.body)
+    const err = await validateCount(req.body)
     if (err.message)
         res.status(400).send(err.message)
     count = new Count(
