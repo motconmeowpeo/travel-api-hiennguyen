@@ -13,7 +13,8 @@ const tourRouter = require('./router/tour')
 const customerRouter = require('./router/customer')
 const orderRouter = require('./router/order')
 const orderDetailRouter = require('./router/order_detail')
-const { orderDetail } = require('./model/order_detail')
+
+const countRouter = require('./router/count')
 //Connect databse
 mongose.connect("mongodb+srv://c2star07:hiennguyen123@cluster0.n0rogqq.mongodb.net/Travel?retryWrites=true&w=majority")
     .then(() => {
@@ -28,6 +29,7 @@ mongose.connect("mongodb+srv://c2star07:hiennguyen123@cluster0.n0rogqq.mongodb.n
 app.use('/api/tour', tourRouter)
 app.use('/api/customer', customerRouter)
 app.use('/api/order', orderRouter)
+app.use('/api/count', countRouter)
 app.use('/api/orderDetail', orderDetailRouter)
 app.get('/', (req, res) => {
     res.send("Chin chào !! This is api design and coding by Nguyên :3 .If you see this message. Have a good day moaz moaz :3")
