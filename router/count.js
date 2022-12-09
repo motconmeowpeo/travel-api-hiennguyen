@@ -38,7 +38,19 @@ router.get("/", (req, res) => {
 })
 
 
+router.put("/:id", async (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    const updateOrder = await Count.findByIdAndUpdate(req.params.id, {
+        visitCount: req.body.visitCount,
+        orderCount: req.body.orderCount,
 
+    }, { new: true })
+    if (!updateOrder)
+        res.status(404).send("Not found")
+    else
+        res.send(updateOrder)
+
+})
 //delete
 router.post("/delete", async (req, res) => {
     let id = req.body.id;
