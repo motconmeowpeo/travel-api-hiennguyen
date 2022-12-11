@@ -1,10 +1,11 @@
 const express = require('express')
 const app = express()
 const mongose = require('mongoose')
+let cors = require('cors')
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-
+app.use(cors({ origin: '*' }))
 
 //Import Router
 
