@@ -34,7 +34,9 @@ app.use('/api/orderDetail', orderDetailRouter)
 app.get('/', (req, res) => {
     res.send("Chin chào !! This is api design and coding by Nguyên :3 .If you see this message. Have a good day moaz moaz :3")
 })
-
+app.get('/', (req, res) => {
+    res.send("NO thing:3")
+})
 
 const PORT = process.env.PORT || 9000
 app.listen(PORT, () => {
